@@ -15,7 +15,7 @@ namespace BL
             _mapper = mapper;
             _userDL = userDL;
         }
-    
+
         public async Task<IEnumerable<UserDTO>> GetAllUsersAsync()
         {
             var users = await _userDL.GetAllUsersAsync();
@@ -24,6 +24,11 @@ namespace BL
         public async Task<UserDTO> GetUserByIdAsync(int id)
         {
             var user = await _userDL.GetUserByIdAsync(id);
+            return _mapper.Map<UserDTO>(user);
+        }
+        public async Task<UserDTO> GetUserByNameAndEmailAsync(string name, string email)
+        {
+            var user = await _userDL.GetUserByNameAndEmailAsync(name, email);
             return _mapper.Map<UserDTO>(user);
         }
         public async Task AddUserAsync(UserDTO userDTO)

@@ -4,12 +4,11 @@ namespace BL
 {
     public interface IUserBL
     {
+        Task AddUserAsync(UserDTO userDTO);
+        Task DeleteUserAsync(int userId);
         Task<IEnumerable<UserDTO>> GetAllUsersAsync();
         Task<UserDTO> GetUserByIdAsync(int id);
-        Task AddUserAsync(UserDTO userDTO);
+        Task<UserDTO> GetUserByNameAndEmailAsync(string name, string email);
         Task UpdateUserAsync(int userId, UserDTO updatedUserDTO);
-        Task DeleteUserAsync(int userId);
-
-
-        }
+    }
 }

@@ -4,10 +4,11 @@ namespace DL
 {
     public interface IUserDL
     {
+        Task AddUserAsync(User user);
+        Task DeleteUserAsync(int userId);
         Task<IEnumerable<User>> GetAllUsersAsync();
         Task<User> GetUserByIdAsync(int id);
-        Task AddUserAsync(User user);
+        Task<User> GetUserByNameAndEmailAsync(string name, string email);
         Task UpdateUserAsync(int userId, User updatedUser);
-        Task DeleteUserAsync(int userId);
     }
 }

@@ -35,6 +35,18 @@ public async Task<IEnumerable<UserDTO>> GetAllUsers()
 
             return Ok(user);
         }
+        [HttpGet("{name}/{email}")]
+        public async Task<ActionResult<UserDTO>> GetUserByNameAndEmail(string name, string email)
+        {
+            var user = await _userBL.GetUserByNameAndEmailAsync(name, email);
+
+            if (user == null)
+            {
+                return NotFound(); // or return appropriate HTTP response for not found
+            }
+
+            return Ok(user);
+        }
 
         [HttpPost]
         public async Task<ActionResult> AddUser([FromBody] UserDTO userDTO)

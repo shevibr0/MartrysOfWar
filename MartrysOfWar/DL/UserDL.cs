@@ -35,6 +35,21 @@ namespace DL
                 throw ex;
             }
         }
+
+        public async Task<User> GetUserByNameAndEmailAsync(string name, string email)
+        {
+            try
+            {
+                // Assuming that 'Users' is the DbSet in your DbContext
+                return await _martyrsofwarContext.Users
+                    .FirstOrDefaultAsync(u => u.Name == name && u.Email == email);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public async Task AddUserAsync(User user)
         {
             try

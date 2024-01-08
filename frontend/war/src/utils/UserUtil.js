@@ -6,6 +6,9 @@ const getUsers = async () => {
 const getUserById = async (id) => {
     return await api.get(`User/?id=${id}`).then(res => res.data)
 }
+const GetUserByNameAndEmail = async (name, email) => {
+    return await api.get(`User/${name}/${email}`).then(res => res.data);
+}
 const addUser = async (user) => {
     return await api.post("User", user).then(res => res.data)
 }
@@ -15,7 +18,5 @@ const updateUser = async (id, user) => {
 const deleteUser = async (id) => {
     return await api.post(`User/?id=${id}`).then(res => res.data)
 }
-const Login = async (name, password) => {
-    return await api.post(`User/?name=${name}?password=${password}`, user).then(res => res.data)
-}
-export { getUsers, getUserById, addUser, updateUser, deleteUser, Login }
+
+export { getUsers, getUserById, addUser, updateUser, deleteUser, GetUserByNameAndEmail }
