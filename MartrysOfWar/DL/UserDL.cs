@@ -41,12 +41,21 @@ namespace DL
             try
             {
                 // Assuming that 'Users' is the DbSet in your DbContext
-                return await _martyrsofwarContext.Users
+                var user = await _martyrsofwarContext.Users
                     .FirstOrDefaultAsync(u => u.Name == name && u.Email == email);
+
+                if (user == null)
+                {
+                    // Handle the case when the user is not found, for example, return null or throw an exception.
+                    // Here, we return null, but you might want to customize this based on your requirements.
+                    return null;
+                }
+                return user;
             }
             catch (Exception ex)
             {
-                throw ex;
+                // Handle the exception appropriately, for example, log the error.
+                throw new Exception("Error retrieving user details.", ex);
             }
         }
 

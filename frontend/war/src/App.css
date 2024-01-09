@@ -1,6 +1,6 @@
 body {
-  background-color: #000;
-  color: #fff;
+  background-color: #fffff1;
+  color: #1b1818;
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
@@ -24,13 +24,13 @@ body {
 h1 {
   text-align: center;
   color: #ffcc00;
-  margin-bottom: 20px;
+ 
 }
 
 label {
   display: block;
   margin-bottom: 8px;
-  color: #fff;
+  color: #100f0f;
 }
 
 input {
@@ -41,7 +41,7 @@ input {
   border: 1px solid #666;
   border-radius: 5px;
   background-color: #333;
-  color: #fff;
+  color: #0e0e0e;
 }
 
 span {
@@ -61,11 +61,28 @@ button {
 }
 
 button:hover {
-  background-color: #333;
+  background-color: #656363;
 }
 
 @media (max-width: 600px) {
   .container {
     max-width: 100%;
   }
+}
+
+.soldiers-container {
+  display: grid;
+  grid-template-columns: repeat(5, 5fr); /* 5 columns */
+  gap: 20px; /* Adjust the gap between soldiers as needed */
+}
+
+.soldier-square {
+  border: 1px solid #0b0a0a;
+  padding: 10px;
+  text-align: center;
+}
+
+.soldier-square img {
+  max-width: 100%;
+  height: auto;
 }

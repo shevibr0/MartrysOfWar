@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-import api from "../../api";// Make sure to import your API library
-import { GetUserByNameAndEmail } from "../../utils/UserUtil";
+import api from "../api";// Make sure to import your API library
+import { GetUserByNameAndEmail } from "../utils/UserUtil";
+import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 const Login = () => {
+    const nav = useNavigate()
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [user, setUser] = useState(null);
 
     const handleClickLogin = async () => {
         if (name === "" || email === "") {
@@ -21,8 +25,12 @@ const Login = () => {
             if (res === null) {
                 setError("Incorrect credentials");
             } else {
-                console.log("הצלחתי!!!!!!");
-                // Perform further actions like redirecting or storing tokens in state/context
+                console.log("Login Successful!");
+                // Set the user data in state
+                setUser(res);
+                console.log("user", user)
+                nav("/homePage")
+
             }
         } catch (error) {
             console.error("An error occurred:", error);

@@ -35,13 +35,13 @@ namespace BL.Services
 
             try
             {
-                HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
+                do
+                {
+                    HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
 
                 if (response.IsSuccessStatusCode)
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
-
-
                     // Adjust the namespace of apiResponseModel accordingly
                     var data = JsonSerializer.Deserialize<apiResponseModel>(apiResponse);
                     List<SoldierDTO> resualt = data.results;
@@ -49,13 +49,14 @@ namespace BL.Services
 
                     // Call SaveDataAsync with the list of soldiers
                     List<Soldier> a = await _dataAccessLayer.FetchDataFromApiAsync(soldiersList);
-
+                    
                     return _mapper.Map<List<SoldierDTO>>(a);
                 }
                 else
                 {
                     Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
                 }
+                } while (apiResponse)
             }
             catch (Exception ex)
             {
