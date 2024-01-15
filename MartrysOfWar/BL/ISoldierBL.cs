@@ -6,7 +6,7 @@ namespace BL
     {
         Task AddSoldierAsync(SoldierDTO soldierDTO);
         Task DeleteSoldierAsync(int soldierId);
-        Task<IEnumerable<SoldierDTO>> GetAllSoldiersAsync();
+        Task<IEnumerable<SoldierDTO>> GetAllSoldiersAsync(int page);
         Task<SoldierDTO> GetSoldierByIdAsync(int id);
         Task UpdateSoldierAsync(int soldierId, SoldierDTO updatedSoldierDTO);
     }

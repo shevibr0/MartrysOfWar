@@ -18,7 +18,7 @@ public class ApiController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<List<SoldierDTO>> FetchDataFromApiAsync()
+    public async Task<string> FetchDataFromApiAsync()
     {
         try
         {

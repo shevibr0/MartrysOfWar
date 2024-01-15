@@ -6,7 +6,7 @@ namespace DL
     {
         Task AddSoldierAsync(Soldier sildier);
         Task DeleteSoldierAsync(int soldierId);
-        Task<IEnumerable<Soldier>> GetAllSoldiersAsync();
+        Task<IEnumerable<Soldier>> GetAllSoldiersAsync(int page);
         Task<Soldier> GetSoldierByIdAsync(int id);
         Task UpdateSoldierAsync(int soldierId, Soldier updatedSoldier);
     }

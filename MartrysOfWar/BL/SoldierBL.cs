@@ -21,9 +21,9 @@ namespace BL
             _soldierDL = soldierDL;
         }
 
-        public async Task<IEnumerable<SoldierDTO>> GetAllSoldiersAsync()
+        public async Task<IEnumerable<SoldierDTO>> GetAllSoldiersAsync(int page)
         {
-            var soldiers = await _soldierDL.GetAllSoldiersAsync();
+            var soldiers = await _soldierDL.GetAllSoldiersAsync(page);
             return _mapper.Map<IEnumerable<SoldierDTO>>(soldiers);
         }
         public async Task<SoldierDTO> GetSoldierByIdAsync(int id)

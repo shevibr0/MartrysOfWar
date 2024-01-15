@@ -1,7 +1,7 @@
 import api from "../api";
 //crud
-const getSoldiers = async () => {
-    return await api.get("Soldier").then(res => res.data)
+const getSoldiers = async (page) => {
+    return await api.get(`Soldier?page=${page}`).then(res => res.data)
 }
 const getSoldiersById = async (id) => {
     return await api.get(`Soldier/?id=${id}`).then(res => res.data)

@@ -29,9 +29,9 @@ namespace BL.Services
             _dataAccessLayer = dataAccessLayer;
         }
 
-        public async Task<List<SoldierDTO>> FetchDataFromApiAsync()
+        public async Task<string> FetchDataFromApiAsync()
         {
-            string apiUrl = "https://iron-swords-api.davar1.co.il/api/person";
+            string apiUrl = "https://iron-swords-api.davar1.co.il/api/person?page=1";
 
             try
             {
@@ -39,24 +39,24 @@ namespace BL.Services
                 {
                     HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
 
-                if (response.IsSuccessStatusCode)
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    // Adjust the namespace of apiResponseModel accordingly
-                    var data = JsonSerializer.Deserialize<apiResponseModel>(apiResponse);
-                    List<SoldierDTO> resualt = data.results;
-                    List<Soldier> soldiersList = _mapper.Map<List<Soldier>>(data.results);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        // Adjust the namespace of apiResponseModel accordingly
+                        var data = JsonSerializer.Deserialize<apiResponseModel>(apiResponse);
+                        List<SoldierDTO> resualt = data.results;
+                        List<Soldier> soldiersList = _mapper.Map<List<Soldier>>(data.results);
 
-                    // Call SaveDataAsync with the list of soldiers
-                    List<Soldier> a = await _dataAccessLayer.FetchDataFromApiAsync(soldiersList);
-                    
-                    return _mapper.Map<List<SoldierDTO>>(a);
-                }
-                else
-                {
-                    Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
-                }
-                } while (apiResponse)
+                        // Call SaveDataAsync with the list of soldiers
+                        string resultData = await _dataAccessLayer.FetchDataFromApiAsync(soldiersList);
+                        apiUrl = data.next;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
+                    }
+                } while (apiUrl != null);
+                //return _mapper.Map<List<SoldierDTO>>(a);
             }
             catch (Exception ex)
             {

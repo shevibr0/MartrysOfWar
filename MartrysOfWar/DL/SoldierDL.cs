@@ -11,11 +11,21 @@ namespace DL
     public class SoldierDL : ISoldierDL
     {
         private MartyrsofwarContext _martyrsofwarContext = new MartyrsofwarContext(); 
-        public async Task<IEnumerable<Soldier>> GetAllSoldiersAsync()
+        public async Task<IEnumerable<Soldier>> GetAllSoldiersAsync(int page)
         {
             try
             {
-                return await _martyrsofwarContext.Soldiers.ToListAsync();
+                int pageSize = 30;
+                int startIndex = (page - 1) * pageSize;
+
+                // Using LINQ to skip records based on page number and take the specified page size
+                List<Soldier> soldiers = await _martyrsofwarContext.Soldiers
+                    .OrderByDescending(s => s.id)  // Assuming you have an 'Id' property for ordering
+                    .Skip(startIndex)
+                    .Take(pageSize)
+                    .ToListAsync();
+
+                return soldiers.ToArray();
             }
             catch (Exception ex)
             {

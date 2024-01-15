@@ -16,7 +16,7 @@ public class ApiServiceDL : IApiServiceDL
         _martyrsofwarContext = martyrsofwarContext;
     }
 
-    public async Task<List<Soldier>> FetchDataFromApiAsync(List<Soldier> soldiers)
+    public async Task<string> FetchDataFromApiAsync(List<Soldier> soldiers)
     {
 
         try
@@ -24,11 +24,11 @@ public class ApiServiceDL : IApiServiceDL
             foreach (var soldier in soldiers)
             {
                 _martyrsofwarContext.Soldiers.Add(soldier);
-
             }
             await _martyrsofwarContext.SaveChangesAsync();
             // HERE I WANT TO ADD THE LIST TO THE SOLIDERS TABLE
-            return await _martyrsofwarContext.Soldiers.ToListAsync();
+            //return await _martyrsofwarContext.Soldiers.ToListAsync();
+            return "Insert Success";
         }
         catch (Exception ex)
         {
