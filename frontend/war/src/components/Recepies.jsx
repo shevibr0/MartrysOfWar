@@ -3,9 +3,6 @@ import { getRecipy } from '../utils/RecipyUtil';
 
 const Recepies = () => {
     const [recepies, setRecepies] = useState([]);
-
-
-
     const fetchRecepies = async () => {
         try {
             const data = await getRecipy();
@@ -15,14 +12,10 @@ const Recepies = () => {
             // Handle error
         }
     };
-
     useEffect(() => {
 
         fetchRecepies();
     }, []);
-
-
-
     return (
         <div>
             {recepies.map((recipe) => (

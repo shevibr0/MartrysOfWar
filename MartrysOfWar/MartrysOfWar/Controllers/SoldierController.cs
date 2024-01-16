@@ -18,10 +18,17 @@ namespace MartrysOfWar.Controllers
         }
 
         // GET: api/<SoldierController>
-        [HttpGet("{page}")]
-        public async Task<IEnumerable<SoldierDTO>> GetAllSoldiers(int page)
+        [HttpGet("GetSolidersByPage")]
+        public async Task<IEnumerable<SoldierDTO>> GetAllSoldiers([FromQuery]int page)
         {
             return await _soldierBL.GetAllSoldiersAsync(page);
+        }
+
+        // GET: api/<SoldierController>
+        [HttpGet("GetCountSoliders")]
+        public int GetCountSoliders()
+        {
+            return _soldierBL.GetCountSoliders();
         }
 
         // GET api/<SoldierController>/5

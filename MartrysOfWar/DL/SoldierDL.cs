@@ -1,5 +1,6 @@
 ﻿using DL.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,6 @@ namespace DL
                     .Skip(startIndex)
                     .Take(pageSize)
                     .ToListAsync();
-
                 return soldiers.ToArray();
             }
             catch (Exception ex)
@@ -32,6 +32,7 @@ namespace DL
                 throw ex;
             }
         }
+
         public async Task<Soldier> GetSoldierByIdAsync(int id)
         {
             try
@@ -92,5 +93,11 @@ namespace DL
             }
         }
 
+        public int GetCountSoliders()
+        {
+            if (_martyrsofwarContext.Soldiers.Count() % 30 == 0)
+                return _martyrsofwarContext.Soldiers.Count() / 30;
+            return _martyrsofwarContext.Soldiers.Count() / 30 + 1;
+        }
     }
 }

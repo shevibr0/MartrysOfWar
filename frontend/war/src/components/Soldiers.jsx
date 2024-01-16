@@ -1,13 +1,13 @@
-
 import React, { useEffect, useState } from 'react';
-import { getSoldiers } from '../utils/SoldierUtil';
-import SoldierSearch from './SoldierSearch';
+import { GetCountSoliders, getSoldiers } from '../utils/SoldierUtil';
+
 
 const Soldiers = () => {
     const [soldiers, setSoldiers] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const pageSize = 30;
-    const totalCount = 0;
+    const [count, setCount] = useState(1);
+    // const pageSize = 30;
+    // const totalCount = 0;
 
 
     const fetchSoldiers = async (page) => {
@@ -15,18 +15,27 @@ const Soldiers = () => {
             const data = await getSoldiers(page);
             console.log('API Response:', data);
             setSoldiers(data);
-            setCurrentPage(page);
         } catch (error) {
+            // setCurrentPage(page);
             // Handle error
         }
     };
 
-    useEffect(() => {
+    // useEffect(() => {
 
+    //     fetchSoldiers(currentPage);
+    // }, []);
+    useEffect(() => {
+        if (count == 1) {
+            GetCountSoliders().then(res => {
+                setCount(res);
+            })
+        }
         fetchSoldiers(currentPage);
     }, [currentPage]);
 
     const handlePageChange = (newPage) => {
+        console.log(newPage);
         setCurrentPage(newPage);
     };
 
@@ -52,7 +61,10 @@ const Soldiers = () => {
                     Previous Page
                 </button>
                 <span>Page {currentPage}</span>
-                <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage * pageSize >= totalCount}>
+                <button onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage == count}
+                // disabled={currentPage * pageSize >= totalCount}
+                >
                     Next Page
                 </button>
             </div>

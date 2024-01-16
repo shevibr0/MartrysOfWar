@@ -46,5 +46,9 @@ namespace BL
             await _soldierDL.DeleteSoldierAsync(soldierId);
         }
 
+        public int GetCountSoliders()
+        {
+            return _soldierDL.GetCountSoliders();
+        }
     }
 }

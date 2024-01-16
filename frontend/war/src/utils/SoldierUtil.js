@@ -1,7 +1,10 @@
 import api from "../api";
 //crud
 const getSoldiers = async (page) => {
-    return await api.get(`Soldier?page=${page}`).then(res => res.data)
+    return await api.get(`Soldier/GetSolidersByPage?page=${page}`).then(res => res.data)
+}
+const GetCountSoliders = () => {
+    return api.get('Soldier/GetCountSoliders').then(res => res.data)
 }
 const getSoldiersById = async (id) => {
     return await api.get(`Soldier/?id=${id}`).then(res => res.data)
@@ -15,4 +18,4 @@ const updateSoldier = async (id, soldier) => {
 const deleteSoldier = async (id) => {
     return await api.post(`Soldier/?id=${id}`).then(res => res.data)
 }
-export { getSoldiers, getSoldiersById, addSoldier, updateSoldier, deleteSoldier }
+export { getSoldiers, GetCountSoliders, getSoldiersById, addSoldier, updateSoldier, deleteSoldier }

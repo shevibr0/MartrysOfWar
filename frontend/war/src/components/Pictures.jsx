@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Picture = () => {
+const Pictures = () => {
     return (
         <div>Picture</div>
     )
 }
 
-export default Picture
+export default Pictures
