@@ -10,5 +10,6 @@ namespace BL
         Task<SoldierDTO> GetSoldierByIdAsync(int id);
         Task UpdateSoldierAsync(int soldierId, SoldierDTO updatedSoldierDTO);
         int GetCountSoliders();
+        Task<IEnumerable<SoldierDTO>> GlobalSearchSoldiersAsync(string searchValue);
     }
 }

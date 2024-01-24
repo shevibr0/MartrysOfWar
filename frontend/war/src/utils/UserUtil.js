@@ -18,5 +18,9 @@ const updateUser = async (id, user) => {
 const deleteUser = async (id) => {
     return await api.post(`User/?id=${id}`).then(res => res.data)
 }
+const searchSoldiers = async (page, search) => {
 
-export { getUsers, getUserById, addUser, updateUser, deleteUser, GetUserByNameAndEmail }
+    return await api.get(`/api/Soldier/GlobalSearchSoldiers?page=${page}&search=${search}`);
+
+};
+export { getUsers, getUserById, addUser, updateUser, deleteUser, GetUserByNameAndEmail, searchSoldiers }

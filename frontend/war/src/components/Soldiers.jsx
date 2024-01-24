@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { GetCountSoliders, getSoldiers } from '../utils/SoldierUtil';
+import { useNavigate } from 'react-router';
+import { searchSoldiers } from '../utils/UserUtil';
 
 
 const Soldiers = () => {
+    const nav = useNavigate()
     const [soldiers, setSoldiers] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [count, setCount] = useState(1);
+    const [searchQuery, setSearchQuery] = useState('');
     // const pageSize = 30;
     // const totalCount = 0;
 
@@ -20,7 +24,15 @@ const Soldiers = () => {
             // Handle error
         }
     };
-
+    // const fetchSoldiers = async (page, search) => {
+    //     try {
+    //         const data = await searchSoldiers(page, search);
+    //         console.log('API Response:', data);
+    //         setSoldiers(data);
+    //     } catch (error) {
+    //         // Handle error
+    //     }
+    // };
     // useEffect(() => {
 
     //     fetchSoldiers(currentPage);
@@ -38,12 +50,24 @@ const Soldiers = () => {
         console.log(newPage);
         setCurrentPage(newPage);
     };
+    const handleSearch = event => {
+        setSearchQuery(event.target.value);
+        const data = searchSoldiers(event.target.value);
+        setSoldiers(data);
+    };
 
     return (
         <div className="soldiers-page">
             <ul>
                 <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-center">לזכרם של נופלי חיל האוויר</h2>
-                <div className="soldiers-container">
+                <div className="search-bar">
+                    <input
+                        type="text"
+                        placeholder="Search..."
+                        value={searchQuery}
+                        onChange={handleSearch}
+                    />
+                </div>                <div className="soldiers-container">
                     {soldiers.map((soldier) => (
                         <div key={soldier.id} className="soldier-square">
                             <img src={soldier.image} alt={`${soldier.first_name} ${soldier.last_name}`} />
@@ -51,10 +75,11 @@ const Soldiers = () => {
                             <p>{`גיל: ${soldier.age}`}</p>
                             <p>{`עיר: ${soldier.city}`}</p>
                             {/* Add more details as needed */}
+                            <button onClick={() => nav(`/soldierInfo/${soldier.id}`)}  >לפרטים נוספים</button>
                         </div>
                     ))}
                 </div>
-            </ul>
+            </ul >
 
             <div>
                 <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
@@ -68,7 +93,7 @@ const Soldiers = () => {
                     Next Page
                 </button>
             </div>
-        </div>
+        </div >
     );
 };
 

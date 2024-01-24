@@ -70,5 +70,20 @@ namespace MartrysOfWar.Controllers
             await _soldierBL.DeleteSoldierAsync(id);
             return Ok(); // or return appropriate HTTP response for success
         }
+
+        [HttpGet("GlobalSearchSoldiers")]
+        public async Task<ActionResult<IEnumerable<SoldierDTO>>> GlobalSearchSoldiers([FromQuery] string searchValue)
+        {
+            try
+            {
+                var result = await _soldierBL.GlobalSearchSoldiersAsync(searchValue);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or handle it appropriately
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
     }
 }

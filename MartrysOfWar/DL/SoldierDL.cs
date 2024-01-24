@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -99,5 +100,31 @@ namespace DL
                 return _martyrsofwarContext.Soldiers.Count() / 30;
             return _martyrsofwarContext.Soldiers.Count() / 30 + 1;
         }
+
+        public async Task<IEnumerable<Soldier>> GlobalSearchSoldiersAsync(string searchValue)
+        {
+            {
+                try
+                {
+                    // Start with the full set of soldiers
+                    IQueryable<Soldier> query = _martyrsofwarContext.Soldiers.AsQueryable();
+
+                    // Execute the query and return the results
+                    List<Soldier> result = await query.Where(s => 
+                     s.first_name.Contains(searchValue)
+                    || s.last_name.Contains(searchValue)
+                    || Convert.ToString(s.age).Contains(searchValue)
+                    || s.city.Contains(searchValue)
+                    ||s.role.Contains(searchValue)).ToListAsync();
+                    return result;
+                }
+                catch (Exception ex)
+                {
+                    // Handle the exception or log it
+                    throw ex;
+                }
+            }
+        }
     }
+
 }
