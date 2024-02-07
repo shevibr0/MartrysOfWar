@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Owner\\Desktop\\פרויקט סיום\\MartrysOfWar\\DL\\DL.csproj": {}
+    "C:\\Users\\shula\\Downloads\\MartrysOfWar-main (3)\\MartrysOfWar-main\\MartrysOfWar\\DL\\DL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Owner\\Desktop\\פרויקט סיום\\MartrysOfWar\\DL\\DL.csproj": {
+    "C:\\Users\\shula\\Downloads\\MartrysOfWar-main (3)\\MartrysOfWar-main\\MartrysOfWar\\DL\\DL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Owner\\Desktop\\פרויקט סיום\\MartrysOfWar\\DL\\DL.csproj",
+        "projectUniqueName": "C:\\Users\\shula\\Downloads\\MartrysOfWar-main (3)\\MartrysOfWar-main\\MartrysOfWar\\DL\\DL.csproj",
         "projectName": "DL",
-        "projectPath": "C:\\Users\\Owner\\Desktop\\פרויקט סיום\\MartrysOfWar\\DL\\DL.csproj",
-        "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Owner\\Desktop\\פרויקט סיום\\MartrysOfWar\\DL\\obj\\",
+        "projectPath": "C:\\Users\\shula\\Downloads\\MartrysOfWar-main (3)\\MartrysOfWar-main\\MartrysOfWar\\DL\\DL.csproj",
+        "packagesPath": "C:\\Users\\shula\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\shula\\Downloads\\MartrysOfWar-main (3)\\MartrysOfWar-main\\MartrysOfWar\\DL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\shula\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -84,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -37,4 +37,8 @@ public class ApiServiceDL : IApiServiceDL
         
     }
 
+    public Task<string> CreateUrlTheilimFromApiAsync(Tehilim tehilim)
+    {
+        throw new NotImplementedException();
+    }
 }

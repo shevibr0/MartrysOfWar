@@ -40,4 +40,28 @@ public class ApiController : ControllerBase
             return null;
         }
     }
+
+    [HttpPost]
+    public async Task<string> CreateUrlTheilimFromApiAsync(TehilimUrlDTO tehilim)
+    {
+        try
+        {
+            return await _apiService.CreateUrlTheilimFromApiAsync(tehilim);
+
+            //if (data != null)
+            //{
+            //    return Ok(data);
+            //}
+            //else
+            //{
+            //    return NotFound(); // 404 Not Found if data is not available
+            //}
+        }
+        catch (Exception ex)
+        {
+            // Log the exception
+            // Consider returning a more specific error message or status code based on the type of exception
+            return null;
+        }
+    }
 }
