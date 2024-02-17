@@ -187,79 +187,65 @@ namespace DL.Models
             {
                 entity.ToTable("SOLDIERS");
 
-                entity.Property(e => e.id)
+                entity.Property(e => e.Id)
                     .ValueGeneratedNever()
                     .HasColumnName("id");
 
-                entity.Property(e => e.age).HasColumnName("age");
+                entity.Property(e => e.Age).HasColumnName("age");
 
-                entity.Property(e => e.at_nova).HasColumnName("at_nova");
+                entity.Property(e => e.AtNova).HasColumnName("at_nova");
 
-                entity.Property(e => e.burial_place)
-                    .HasMaxLength(20)
-                    .HasColumnName("burial_place");
+                entity.Property(e => e.BurialPlace).HasColumnName("burial_place");
 
-                entity.Property(e => e.city)
+                entity.Property(e => e.City)
                     .HasMaxLength(20)
                     .HasColumnName("city");
 
-                entity.Property(e => e.classification)
-                    .HasMaxLength(20)
-                    .HasColumnName("classification");
+                entity.Property(e => e.Classification).HasColumnName("classification");
 
-                entity.Property(e => e.date_of_death)
+                entity.Property(e => e.DateOfDeath)
                     .HasColumnType("date")
                     .HasColumnName("date_of_death");
 
-                entity.Property(e => e.first_name)
+                entity.Property(e => e.FirstName)
                     .HasMaxLength(30)
                     .HasColumnName("first_name");
 
-                entity.Property(e => e.gender)
+                entity.Property(e => e.Gender)
                     .HasMaxLength(10)
                     .HasColumnName("gender");
 
-                entity.Property(e => e.hebrew_date)
-                    .HasMaxLength(30)
-                    .HasColumnName("hebrew_date");
+                entity.Property(e => e.HebrewDate).HasColumnName("hebrew_date");
 
-                entity.Property(e => e.image).HasColumnName("image");
+                entity.Property(e => e.Image).HasColumnName("image");
 
-                entity.Property(e => e.is_approved).HasColumnName("is_approved");
+                entity.Property(e => e.IsApproved).HasColumnName("is_approved");
 
-                entity.Property(e => e.is_child).HasColumnName("is_child");
+                entity.Property(e => e.IsChild).HasColumnName("is_child");
 
-                entity.Property(e => e.is_emergency_squad).HasColumnName("is_emergency_squad");
+                entity.Property(e => e.IsEmergencySquad).HasColumnName("is_emergency_squad");
 
-                entity.Property(e => e.last_name)
+                entity.Property(e => e.LastName)
                     .HasMaxLength(30)
                     .HasColumnName("last_name");
 
-                entity.Property(e => e.long_description).HasColumnName("long_description");
+                entity.Property(e => e.LongDescription).HasColumnName("long_description");
 
-                entity.Property(e => e.place_of_death)
-                    .HasMaxLength(30)
-                    .HasColumnName("place_of_death");
+                entity.Property(e => e.PlaceOfDeath).HasColumnName("place_of_death");
 
-                entity.Property(e => e.place_of_service)
-                    .HasMaxLength(20)
-                    .HasColumnName("place_of_service");
+                entity.Property(e => e.PlaceOfService).HasColumnName("place_of_service");
 
-                entity.Property(e => e.rank_name)
-                    .HasMaxLength(20)
-                    .HasColumnName("rank_name");
+                entity.Property(e => e.RankName).HasColumnName("rank_name");
 
-                entity.Property(e => e.rank_organization)
-                    .HasMaxLength(10)
-                    .HasColumnName("rank_organization");
+                entity.Property(e => e.RankOrganization).HasColumnName("rank_organization");
 
-                entity.Property(e => e.role)
+                entity.Property(e => e.Role)
                     .HasMaxLength(50)
                     .HasColumnName("role");
 
-                entity.Property(e => e.short_description).HasColumnName("short_description");
+                entity.Property(e => e.ShortDescription).HasColumnName("short_description");
 
-                entity.Property(e => e.url_to_article).HasColumnName("url_to_article");
+                entity.Property(e => e.UrlToArticle).HasColumnName("url_to_article");
             });
 
             modelBuilder.Entity<Tehilim>(entity =>
@@ -295,9 +281,7 @@ namespace DL.Models
             {
                 entity.ToTable("USERS");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID");
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Email)
                     .HasMaxLength(30)

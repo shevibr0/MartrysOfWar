@@ -1,42 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import { GetCountSoliders, getSoldiers } from '../utils/SoldierUtil';
+import { GetCountSoliders, getSoldiers, globalSearchSoldiers } from '../utils/SoldierUtil';
 import { useNavigate } from 'react-router';
-import { searchSoldiers } from '../utils/UserUtil';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSearchSoliders, setSoliders } from '../features/soliderSlice';
 
 
 const Soldiers = () => {
     const nav = useNavigate()
-    const [soldiers, setSoldiers] = useState([]);
+    const soldiers = useSelector(state => state.solider.soliders);
+    const searchSoldiers = useSelector(state => state.solider.searchSoliders);
+    const solidersArr = searchSoldiers.length >= 0 ? searchSoldiers : soldiers;
+    // const [soldiers, setSoldiers] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [count, setCount] = useState(1);
     const [searchQuery, setSearchQuery] = useState('');
     // const pageSize = 30;
     // const totalCount = 0;
-
+    const dispatch = useDispatch();
 
     const fetchSoldiers = async (page) => {
         try {
             const data = await getSoldiers(page);
             console.log('API Response:', data);
-            setSoldiers(data);
+            // setSoldiers(data);
+            dispatch(setSoliders(data));
         } catch (error) {
             // setCurrentPage(page);
             // Handle error
         }
     };
-    // const fetchSoldiers = async (page, search) => {
-    //     try {
-    //         const data = await searchSoldiers(page, search);
-    //         console.log('API Response:', data);
-    //         setSoldiers(data);
-    //     } catch (error) {
-    //         // Handle error
-    //     }
-    // };
-    // useEffect(() => {
 
-    //     fetchSoldiers(currentPage);
-    // }, []);
     useEffect(() => {
         if (count == 1) {
             GetCountSoliders().then(res => {
@@ -50,11 +43,19 @@ const Soldiers = () => {
         console.log(newPage);
         setCurrentPage(newPage);
     };
-    const handleSearch = event => {
-        setSearchQuery(event.target.value);
-        const data = searchSoldiers(event.target.value);
-        setSoldiers(data);
-    };
+
+
+    const handleSearchValue = (e) => {
+        let searchValue = e.target.value;
+        if (searchValue != "") {
+            globalSearchSoldiers(searchValue).then(res => {
+                dispatch(setSearchSoliders(res));
+            });
+        }
+        else {
+            dispatch(setSearchSoliders([]));
+        }
+    }
 
     return (
         <div className="soldiers-page">
@@ -65,13 +66,14 @@ const Soldiers = () => {
                         type="text"
                         placeholder="Search..."
                         value={searchQuery}
-                        onChange={handleSearch}
+                        // onChange={handleSearch}
+                        onChange={handleSearchValue}
                     />
                 </div>                <div className="soldiers-container">
-                    {soldiers.map((soldier) => (
+                    {solidersArr.map((soldier) => (
                         <div key={soldier.id} className="soldier-square">
-                            <img src={soldier.image} alt={`${soldier.first_name} ${soldier.last_name}`} />
-                            <h3>{`${soldier.first_name} ${soldier.last_name}`}</h3>
+                            <img src={soldier.image} alt={`${soldier.firstName} ${soldier.lastName}`} />
+                            <h3>{`${soldier.firstName} ${soldier.lastName}`}</h3>
                             <p>{`גיל: ${soldier.age}`}</p>
                             <p>{`עיר: ${soldier.city}`}</p>
                             {/* Add more details as needed */}
@@ -98,3 +100,15 @@ const Soldiers = () => {
 };
 
 export default Soldiers;
+
+
+// {soldiers.map((soldier) => (
+//     <div key={soldier.id} className="soldier-square">
+//         <img src={soldier.image} alt={`${soldier.first_name} ${soldier.last_name}`} />
+//         <h3>{`${soldier.first_name} ${soldier.last_name}`}</h3>
+//         <p>{`גיל: ${soldier.age}`}</p>
+//         <p>{`עיר: ${soldier.city}`}</p>
+//         {/* Add more details as needed */}
+//         <button onClick={() => nav(`/soldierInfo/${soldier.id}`)}  >לפרטים נוספים</button>
+//     </div>
+// ))}

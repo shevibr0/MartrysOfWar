@@ -4,7 +4,7 @@ const searchSoldierInDatabase = async (soldierName) => {
     // You can use AJAX, fetch, or any other method to communicate with the server
     // and retrieve the search result
     // For now, let's assume the soldier is found with some details
-    return await {
+    return await api.post('', {
         id: 1,
         first_name: 'John',
         last_name: 'Doe',
@@ -28,6 +28,6 @@ const searchSoldierInDatabase = async (soldierName) => {
         is_child: false,
         is_emergency_squad: true,
         at_nova: false,
-    };
+    });
 };
 export { searchSoldierInDatabase }

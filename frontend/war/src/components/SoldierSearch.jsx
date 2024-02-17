@@ -1,6 +1,7 @@
 // SoldierSearch.js
 
 import React, { useState } from 'react';
+import { globalSearchSoldiers } from '../utils/SoldierUtil';
 
 const SoldierSearch = ({ onSearchResults, allSoldiers }) => {
     const [soldierName, setSoldierName] = useState('');
@@ -41,6 +42,18 @@ const SoldierSearch = ({ onSearchResults, allSoldiers }) => {
         handleSearch();
     };
 
+    const handleSearchValue = (e) => {
+        let searchValue = e.target.value;
+        if (searchValue != "") {
+            globalSearchSoldiers(searchValue).then(res => {
+
+            });
+        }
+        else {
+
+        }
+    }
+
     return (
         <div style={{ direction: 'rtl' }}>
             <h2>חיפוש</h2>
@@ -53,7 +66,8 @@ const SoldierSearch = ({ onSearchResults, allSoldiers }) => {
                     id="soldierName"
                     placeholder="Soldier's Name"
                     value={soldierName}
-                    onChange={handleChange}
+                    // onChange={handleChange}
+                    onChange={handleSearchValue}
                 />
             </div>
             <div>

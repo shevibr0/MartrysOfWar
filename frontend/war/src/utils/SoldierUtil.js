@@ -18,4 +18,8 @@ const updateSoldier = async (id, soldier) => {
 const deleteSoldier = async (id) => {
     return await api.post(`Soldier/?id=${id}`).then(res => res.data)
 }
-export { getSoldiers, GetCountSoliders, getSoldiersById, addSoldier, updateSoldier, deleteSoldier }
+
+const globalSearchSoldiers = async (searchValue) => {
+    return await api.get(`Soldier/GlobalSearchSoldiers?searchValue=${searchValue}`).then(res => res.data)
+}
+export { getSoldiers, GetCountSoliders, getSoldiersById, addSoldier, updateSoldier, deleteSoldier, globalSearchSoldiers }

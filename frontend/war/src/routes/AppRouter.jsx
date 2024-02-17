@@ -10,11 +10,13 @@ import Remembers from '../components/Remembers'
 import AddRemember from '../components/AddRemember'
 import AddPicture from '../components/AddPicture'
 import Pictures from '../components/Pictures'
+import Register from '../components/Register'
 
 export const AppRouter = () => {
     return (
         <Routes>
             <Route path="/" element={<Login />} ></Route>
+            <Route path="/register" element={<Register />} ></Route>
             <Route path="/homePage" element={<HomePage />} ></Route >
             <Route path="/soldiers" element={<Soldiers />} ></Route >
             <Route path="/recepies" element={<Recepies />} ></Route >

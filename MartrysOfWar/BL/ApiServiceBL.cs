@@ -50,7 +50,8 @@ namespace BL.Services
 
                     //// Call SaveDataAsync with the list of soldiers
                     //string resultData = await _dataAccessLayer.FetchDataFromApiAsync(soldiersList);
-                    return data.ReadLink;
+                    //return data.ReadLink;
+                    return "";
                 }
                 else
                 {

@@ -11345,23 +11345,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\shula\\.nuget\\packages\\": {},
+    "C:\\Users\\Owner\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\shula\\Downloads\\MartrysOfWar-main (3)\\MartrysOfWar-main\\MartrysOfWar\\MartrysOfWar\\MartrysOfWar.csproj",
+      "projectUniqueName": "C:\\Users\\Owner\\Desktop\\פרויקט סיום\\MartrysOfWar\\MartrysOfWar\\MartrysOfWar.csproj",
       "projectName": "MartrysOfWar",
-      "projectPath": "C:\\Users\\shula\\Downloads\\MartrysOfWar-main (3)\\MartrysOfWar-main\\MartrysOfWar\\MartrysOfWar\\MartrysOfWar.csproj",
-      "packagesPath": "C:\\Users\\shula\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\shula\\Downloads\\MartrysOfWar-main (3)\\MartrysOfWar-main\\MartrysOfWar\\MartrysOfWar\\obj\\",
+      "projectPath": "C:\\Users\\Owner\\Desktop\\פרויקט סיום\\MartrysOfWar\\MartrysOfWar\\MartrysOfWar.csproj",
+      "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Owner\\Desktop\\פרויקט סיום\\MartrysOfWar\\MartrysOfWar\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\shula\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -11371,18 +11371,17 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\shula\\Downloads\\MartrysOfWar-main (3)\\MartrysOfWar-main\\MartrysOfWar\\BL\\BL.csproj": {
-              "projectPath": "C:\\Users\\shula\\Downloads\\MartrysOfWar-main (3)\\MartrysOfWar-main\\MartrysOfWar\\BL\\BL.csproj"
+            "C:\\Users\\Owner\\Desktop\\פרויקט סיום\\MartrysOfWar\\BL\\BL.csproj": {
+              "projectPath": "C:\\Users\\Owner\\Desktop\\פרויקט סיום\\MartrysOfWar\\BL\\BL.csproj"
             },
-            "C:\\Users\\shula\\Downloads\\MartrysOfWar-main (3)\\MartrysOfWar-main\\MartrysOfWar\\Entities\\Entities.csproj": {
-              "projectPath": "C:\\Users\\shula\\Downloads\\MartrysOfWar-main (3)\\MartrysOfWar-main\\MartrysOfWar\\Entities\\Entities.csproj"
+            "C:\\Users\\Owner\\Desktop\\פרויקט סיום\\MartrysOfWar\\Entities\\Entities.csproj": {
+              "projectPath": "C:\\Users\\Owner\\Desktop\\פרויקט סיום\\MartrysOfWar\\Entities\\Entities.csproj"
             }
           }
         }
@@ -11439,7 +11438,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

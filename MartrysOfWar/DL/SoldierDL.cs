@@ -22,7 +22,7 @@ namespace DL
 
                 // Using LINQ to skip records based on page number and take the specified page size
                 List<Soldier> soldiers = await _martyrsofwarContext.Soldiers
-                    .OrderByDescending(s => s.id)  // Assuming you have an 'Id' property for ordering
+                    .OrderByDescending(s => s.Id)  // Assuming you have an 'Id' property for ordering
                     .Skip(startIndex)
                     .Take(pageSize)
                     .ToListAsync();
@@ -107,15 +107,16 @@ namespace DL
                 try
                 {
                     // Start with the full set of soldiers
-                    IQueryable<Soldier> query = _martyrsofwarContext.Soldiers.AsQueryable();
+                    //IQueryable<Soldier> query = _martyrsofwarContext.Soldiers.AsQueryable();
 
                     // Execute the query and return the results
-                    List<Soldier> result = await query.Where(s => 
-                     s.first_name.Contains(searchValue)
-                    || s.last_name.Contains(searchValue)
-                    || Convert.ToString(s.age).Contains(searchValue)
-                    || s.city.Contains(searchValue)
-                    ||s.role.Contains(searchValue)).ToListAsync();
+                    List<Soldier> result = await _martyrsofwarContext.Soldiers.Where(s =>
+                      (s.FirstName != null && s.FirstName.Contains(searchValue)) ||
+                        (s.LastName != null && s.LastName.Contains(searchValue)) ||
+                        (s.Age.HasValue && s.Age.ToString().Contains(searchValue)) || // Assuming Age is Nullable<int>
+                        (s.City != null && s.City.Contains(searchValue)) ||
+                        (s.Role != null && s.Role.Contains(searchValue)))
+                    .ToListAsync();
                     return result;
                 }
                 catch (Exception ex)
