@@ -22,26 +22,30 @@ const SoldierInfo = () => {
         fetchSoldierDetails();
     }, [id]);
 
-    if (!soldier) {
-        return <p>Loading...</p>;
-    }
+    // if (!soldier) {
+    //     return <p>Loading...</p>;
+    // }
 
     return (
-        <div className="soldier-info">
-            <h1>{`${soldier.first_name} ${soldier.last_name}`}</h1>
-            <img src={soldier.image} alt={`${soldier.first_name} ${soldier.last_name}`} />
-            <p><strong>Age:</strong> {soldier.age}</p>
-            <p><strong>Gender:</strong> {soldier.gender}</p>
-            <p><strong>City:</strong> {soldier.city}</p>
-            <p><strong>Date of Death:</strong> {soldier.date_of_death}</p>
-            <p><strong>Place of Death:</strong> {soldier.place_of_death}</p>
-            <p><strong>Rank:</strong> {soldier.rank_name}</p>
-            <p><strong>Role:</strong> {soldier.role}</p>
-            <p><strong>Short Description:</strong> {soldier.short_description}</p>
-            <p><strong>Long Description:</strong> {soldier.long_description}</p>
-            <p><strong>URL to Article:</strong> <a href={soldier.url_to_article}>{soldier.url_to_article}</a></p>
-            {/* Add more details as needed */}
-        </div>
+        <>
+            {
+                soldier !== null ?
+                    <div className="soldier-info">
+                        <h1>{`${soldier.firstName} ${soldier.lastName}`}</h1>
+                        <img src={soldier.image} alt={`${soldier.firstName} ${soldier.lastName}`} />
+                        <p><strong>Age:</strong> {soldier.age}</p>
+                        <p><strong>Gender:</strong> {soldier.gender}</p>
+                        <p><strong>City:</strong> {soldier.city}</p>
+                        <p><strong>Date of Death:</strong> {new Date(soldier.dateOfDeath).toDateString()}</p>
+                        <p><strong>Place of Death:</strong> {soldier.placeOfDeath}</p>
+                        <p><strong>Rank:</strong> {soldier.rankName}</p>
+                        <p><strong>Role:</strong> {soldier.role}</p>
+                        <p><strong>Short Description:</strong> {soldier.shortDescription}</p>
+                        <p><strong>Long Description:</strong> {soldier.longDescription}</p>
+                        <p><strong>URL to Article:</strong> <a target="_blank" href={soldier.urlToArticle}>{soldier.urlToArticle}</a></p>
+                        {/* Add more details as needed */}
+                    </div> : <p>Loading...</p>}
+        </>
     );
 };
 

@@ -101,11 +101,13 @@ namespace DL
             return _martyrsofwarContext.Soldiers.Count() / 30 + 1;
         }
 
-        public async Task<IEnumerable<Soldier>> GlobalSearchSoldiersAsync(string searchValue)
+        public async Task<IEnumerable<Soldier>> GlobalSearchSoldiersAsync(string searchValue, int page)
         {
             {
                 try
                 {
+                    int pageSize = 30;
+                    int startIndex = (page - 1) * pageSize;
                     // Start with the full set of soldiers
                     //IQueryable<Soldier> query = _martyrsofwarContext.Soldiers.AsQueryable();
 
@@ -114,9 +116,10 @@ namespace DL
                       (s.FirstName != null && s.FirstName.Contains(searchValue)) ||
                         (s.LastName != null && s.LastName.Contains(searchValue)) ||
                         (s.Age.HasValue && s.Age.ToString().Contains(searchValue)) || // Assuming Age is Nullable<int>
-                        (s.City != null && s.City.Contains(searchValue)) ||
-                        (s.Role != null && s.Role.Contains(searchValue)))
-                    .ToListAsync();
+                        (s.City != null && s.City.Contains(searchValue)) 
+                        //||(s.Role != null && s.Role.Contains(searchValue))
+                        ).
+                        OrderByDescending(s => s.Id).Skip(startIndex).Take(pageSize + 1).ToListAsync();
                     return result;
                 }
                 catch (Exception ex)

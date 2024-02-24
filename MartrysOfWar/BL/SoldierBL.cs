@@ -50,10 +50,10 @@ namespace BL
         {
             return _soldierDL.GetCountSoliders();
         }
-        public async Task<IEnumerable<SoldierDTO>> GlobalSearchSoldiersAsync(string searchValue)
+        public async Task<IEnumerable<SoldierDTO>> GlobalSearchSoldiersAsync(string searchValue, int page)
         {
             // You can perform additional validation or business logic here
-            var soldiers = await _soldierDL.GlobalSearchSoldiersAsync(searchValue);
+            var soldiers = await _soldierDL.GlobalSearchSoldiersAsync(searchValue,page);
 
             // Assuming _mapper is an instance of AutoMapper IMapper
             return _mapper.Map<IEnumerable<SoldierDTO>>(soldiers);

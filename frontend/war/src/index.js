@@ -7,19 +7,22 @@ import reportWebVitals from './reportWebVitals';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from "react-redux";
 import soliderSlice from './features/soliderSlice';
+import userSlice from './features/userSlice';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
 const store = configureStore({
   reducer: {
+    user: userSlice,
     solider: soliderSlice
   }
 })
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider store={store}>
-    <BrowserRouter>
+  <BrowserRouter>
+    <Provider store={store}>
       <App />
-    </BrowserRouter>
-  </Provider>
+    </Provider>
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

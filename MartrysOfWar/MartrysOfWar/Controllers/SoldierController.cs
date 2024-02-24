@@ -18,21 +18,24 @@ namespace MartrysOfWar.Controllers
         }
 
         // GET: api/<SoldierController>
-        [HttpGet("GetSolidersByPage")]
+        [HttpGet]
+        [Route("GetSolidersByPage")]
         public async Task<IEnumerable<SoldierDTO>> GetAllSoldiers([FromQuery]int page)
         {
             return await _soldierBL.GetAllSoldiersAsync(page);
         }
 
         // GET: api/<SoldierController>
-        [HttpGet("GetCountSoliders")]
+        [HttpGet]
+        [Route("GetCountSoliders")]
         public int GetCountSoliders()
         {
             return _soldierBL.GetCountSoliders();
         }
 
         // GET api/<SoldierController>/5
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("{id}")]
         public async Task<ActionResult<SoldierDTO>> GetSoldierById(int id)
         {
             var soldier = await _soldierBL.GetSoldierByIdAsync(id);
@@ -71,12 +74,13 @@ namespace MartrysOfWar.Controllers
             return Ok(); // or return appropriate HTTP response for success
         }
 
-        [HttpGet("GlobalSearchSoldiers")]
-        public async Task<ActionResult<IEnumerable<SoldierDTO>>> GlobalSearchSoldiers([FromQuery] string searchValue)
+        [HttpGet]
+        [Route("GlobalSearchSoldiers")]
+        public async Task<ActionResult<IEnumerable<SoldierDTO>>> GlobalSearchSoldiers([FromQuery] string searchValue, [FromQuery] int page)
         {
             try
             {
-                var result = await _soldierBL.GlobalSearchSoldiersAsync(searchValue);
+                var result = await _soldierBL.GlobalSearchSoldiersAsync(searchValue, page);
                 return Ok(result);
             }
             catch (Exception ex)

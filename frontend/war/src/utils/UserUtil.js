@@ -10,7 +10,7 @@ const GetUserByNameAndEmail = async (name, email) => {
     return await api.get(`User/${name}/${email}`).then(res => res.data);
 }
 const addUser = async (user) => {
-    return await api.post("User", user).then(res => res.data)
+    return await api.post("User", user).then(res => res)
 }
 const updateUser = async (id, user) => {
     return await api.update(`User/?id=${id}`, user).then(res => res.data)

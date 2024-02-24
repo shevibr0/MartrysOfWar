@@ -10,7 +10,7 @@ namespace DL
         Task<Soldier> GetSoldierByIdAsync(int id);
         Task UpdateSoldierAsync(int soldierId, Soldier updatedSoldier);
         int GetCountSoliders();
-        Task<IEnumerable<Soldier>> GlobalSearchSoldiersAsync(string searchValue);
+        Task<IEnumerable<Soldier>> GlobalSearchSoldiersAsync(string searchValue, int page);
         
         }
 

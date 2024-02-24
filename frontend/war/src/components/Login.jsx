@@ -3,6 +3,8 @@ import api from "../api";// Make sure to import your API library
 import { GetUserByNameAndEmail } from "../utils/UserUtil";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setConnectedUser } from "../features/userSlice";
 
 const Login = () => {
     const nav = useNavigate()
@@ -11,6 +13,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [user, setUser] = useState(null);
+    const dispatch = useDispatch();
 
     const handleClickLogin = async () => {
         if (name === "" || email === "") {
@@ -28,7 +31,8 @@ const Login = () => {
                 console.log("Login Successful!");
                 // Set the user data in state
                 setUser(res);
-                console.log("user", user)
+                console.log("user", res);
+                dispatch(setConnectedUser(res));
                 nav("/homePage")
 
             }

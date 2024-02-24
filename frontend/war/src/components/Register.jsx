@@ -19,11 +19,11 @@ const Register = () => {
         try {
             const newUser = { name, email, password, phoneNumber };
             const response = await addUser(newUser);
-
-            if (response.status === 201) {
+            console.log(response);
+            if (response.status === 200) {
                 console.log("Registration Successful!");
                 // Optionally, you can redirect the user to the login page
-                nav("/login");
+                nav("/");
             } else {
                 setError("Registration failed");
             }

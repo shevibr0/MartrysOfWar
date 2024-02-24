@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-let initilValue = {
+const initialValue = {
     soliders: [],
     searchSoliders: []
 }
 
 const soliderSlice = createSlice({
     name: "solider",
-    initialState: initilValue,
+    initialState: initialValue,
     reducers: {
         setSoliders: (state, action) => {
             state.soliders = action.payload;

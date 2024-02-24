@@ -48,10 +48,10 @@ public async Task<IEnumerable<UserDTO>> GetAllUsers()
             return Ok(userDTO);
         }
         [HttpPost]
-        public async Task<ActionResult> AddUser([FromBody] UserDTO userDTO)
+        public async Task<ActionResult<string>> AddUser([FromBody] UserDTO userDTO)
         {
             await _userBL.AddUserAsync(userDTO);
-            return Ok(); // or return appropriate HTTP response for success
+            return Ok("Success"); // or return appropriate HTTP response for success
         }
 
         [HttpPut("{id}")]
