@@ -17,6 +17,7 @@ const Soldiers = () => {
     const [isPrev, setIsPrev] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [searchMessage, setSearchMessage] = useState('');
+    const [isOpen, setIsOpen] = useState(false);
     // const pageSize = 30;
     // const totalCount = 0;
     const dispatch = useDispatch();
@@ -107,30 +108,73 @@ const Soldiers = () => {
     }
 
     return (
-        <div className="soldiers-page">
-            <ul>
-                <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-center">לזכרם של נופלי חיל האוויר</h2>
-                <div className="search-bar">
+        <div className="bg-gray-200">
+            <button className="lg:hidden md:hidden sm:hidden" onClick={() => { setIsOpen(!isOpen) }} >
+                <svg className="w-6 h-6 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 11h16M4 16h16" />
+                </svg>
+            </button>
+            {isOpen && (
+                <nav className="lg:hidden md:hidden sm:hidden left-0 top-0 flex shadow bg-white  justify-around items-center text-purple-500 lg:text-3xl lg:h-[80px] md:text-2m md:h-[30px] sm:text-sm  text-xs mt-4 sm:mt-0 font-normal font-['Alef'] leading-[45px] cursor-pointer">
+                    <div onClick={() => nav('/register')}>
+                        הרשמה
+                    </div>
+                    <div onClick={() => nav('/')}>
+                        התחברות
+                    </div>
+                    <div onClick={() => nav('/contact')}>
+                        צור קשר
+                    </div>
+                    <div onClick={() => nav('/soldiers')}>
+                        חיפוש
+                    </div>
+                    <div onClick={() => nav('/homePage')} className='font-bold'>
+                        אודות
+                    </div>
+                </nav>
+            )}
+            <nav className="hidden lg:flex md:flex sm:flex left-0 top-0 shadow bg-white  justify-center  items-center  text-black lg:text-2xl  lg:h-[47px] md:text-xl md:h-[40px] sm:text-s  sm:h-[20px] mt-4 sm:mt-0 font-normal font-['Alef'] leading-[45px] cursor-pointer space-x-11">
+                <div onClick={() => nav('/register')}>
+                    הרשמה
+                </div>
+                <div onClick={() => nav('/')}>
+                    התחברות
+                </div>
+                <div onClick={() => nav('/contact')}>
+                    צור קשר
+                </div>
+                <div onClick={() => nav('/soldiers')}>
+                    חיפוש
+                </div>
+                <div onClick={() => nav('/homePage')} className='font-bold'>
+                    אודות
+                </div>
+            </nav>
+            <div className="">
+                <div className=''>
+                    <h2 className=" text-black text-4xl font-bold font-['Alef'] mb-4 text-center">לזכרם של נופלי חיל האוויר</h2>
+                </div>
+                <div className="text-center mb-4">
                     <input
-                        type="text"
+                        type=""
                         placeholder="Search..."
                         value={searchQuery}
-                        // onChange={handleSearch}
                         onChange={handleSearchValue}
+                        className="border border-black px-4 py-2 rounded-md "
                     />
-                </div>                <div className="soldiers-container">
-                    {searchMessage == "" ? solidersArr.map((soldier) => (
-                        <div key={soldier.id} className="soldier-square">
-                            <img src={soldier.image} alt={`${soldier.firstName} ${soldier.lastName}`} />
+                </div>
+                <div className="grid lg:grid-cols-4 md:grid-cols-4 gap-4 ">
+                    {searchMessage === "" ? solidersArr.map((soldier) => (
+                        <div key={soldier.id} className="text-center">
+                            <img className="h-64 w-64 object-cover" src={soldier.image} alt={`${soldier.firstName} ${soldier.lastName}`} />
                             <h3>{`${soldier.firstName} ${soldier.lastName}`}</h3>
                             <p>{`גיל: ${soldier.age}`}</p>
                             <p>{`עיר: ${soldier.city}`}</p>
-                            {/* Add more details as needed */}
-                            <button onClick={() => nav(`/soldierInfo/${soldier.id}`)}  >לפרטים נוספים</button>
+                            <button className="font-semibold mb-2 mt-4 border border-black text-black p-2 rounded-md hover:opacity-80  hover:text-black hover:font-extrabold hover:border-black" onClick={() => nav(`/soldierInfo/${soldier.id}`)}>לפרטים נוספים</button>
                         </div>
                     )) : <span>{searchMessage}</span>}
                 </div>
-            </ul >
+            </div>
 
             <div>
                 <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1 && !isPrev}>
@@ -145,6 +189,7 @@ const Soldiers = () => {
                 </button>
             </div>
         </div >
+
     );
 };
 

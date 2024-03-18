@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router";
-import { addUser } from "../utils/UserUtil";
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router';
 
-const Register = () => {
+
+const Contact = () => {
+
     const nav = useNavigate();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -10,49 +11,6 @@ const Register = () => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [error, setError] = useState('');
     const [isOpen, setIsOpen] = useState(false);
-
-    const handleRegistration = async () => {
-        if (name === "" || email === "" || password === "" || phoneNumber === "") {
-            setError('Please fill in all fields');
-            return;
-        }
-
-        try {
-            const newUser = { name, email, password, phoneNumber };
-            const response = await addUser(newUser);
-            console.log(response);
-            if (response.status === 200) {
-                console.log("Registration Successful!");
-                // Optionally, you can redirect the user to the login page
-                nav("/");
-            } else {
-                setError("Registration failed");
-            }
-        } catch (error) {
-            console.error("An error occurred:", error);
-            setError("An error occurred while processing your request");
-        }
-    };
-
-    const handleChangeName = (event) => {
-        setError("");
-        setName(event.target.value);
-    };
-
-    const handleChangeEmail = (event) => {
-        setError("");
-        setEmail(event.target.value);
-    };
-
-    const handleChangePassword = (event) => {
-        setError("");
-        setPassword(event.target.value);
-    };
-
-    const handleChangePhoneNumber = (event) => {
-        setError("");
-        setPhoneNumber(event.target.value);
-    };
 
     return (
         <div className="bg-gray-200">
@@ -102,7 +60,7 @@ const Register = () => {
                     <h1 className="text-black text-4xl font-bold font-['Alef'] mb-4 text-center">הרשמה</h1>
                     <div className="flex flex-col items-center">
                         <label htmlFor="name">שם</label>
-                        <input name="name" type="text" placeholder="הכנס שם" value={name} onChange={handleChangeName} style={{ direction: 'rtl' }} /><br />
+                        {/* <input name="name" type="text" placeholder="הכנס שם" value={name} onChange={handleChangeName} style={{ direction: 'rtl' }} /><br />
                         <label htmlFor="email">מייל</label>
                         <input name="email" type="email" placeholder="הכנס מייל" value={email} onChange={handleChangeEmail} style={{ direction: 'rtl' }} /><br />
                         <label htmlFor="password">סיסמא</label>
@@ -110,25 +68,12 @@ const Register = () => {
                         <label htmlFor="phoneNumber">טלפון</label>
                         <input name="phoneNumber" type="tel" placeholder="הכנס טלפון" value={phoneNumber} onChange={handleChangePhoneNumber} /><br />
                         <span>{error}</span>
-                        <button onClick={handleRegistration} className="bg-black text-white px-4 py-2 rounded-md">הרשמה</button>
+                        <button onClick={handleRegistration} className="bg-black text-white px-4 py-2 rounded-md">הרשמה</button> */}
                     </div>
                 </div>
             </div>
         </div>
-        // <div>
-        //     <h1>Registration</h1>
-        //     <label htmlFor="name">Enter name:</label>
-        //     <input name="name" type="text" placeholder="Enter name" value={name} onChange={handleChangeName} /><br />
-        //     <label htmlFor="email">Enter email:</label>
-        //     <input name="email" type="email" placeholder="Enter email" value={email} onChange={handleChangeEmail} /><br />
-        //     <label htmlFor="password">Enter password:</label>
-        //     <input name="password" type="password" placeholder="Enter password" value={password} onChange={handleChangePassword} /><br />
-        //     <label htmlFor="phoneNumber">Enter phone number:</label>
-        //     <input name="phoneNumber" type="tel" placeholder="Enter phone number" value={phoneNumber} onChange={handleChangePhoneNumber} /><br />
-        //     <span>{error}</span>
-        //     <button onClick={handleRegistration}>Register</button>
-        // </div>
-    );
+    )
 }
 
-export default Register;
+export default Contact

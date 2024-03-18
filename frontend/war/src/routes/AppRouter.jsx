@@ -11,6 +11,7 @@ import AddRemember from '../components/AddRemember'
 import AddPicture from '../components/AddPicture'
 import Pictures from '../components/Pictures'
 import Register from '../components/Register'
+import Contact from '../components/Contact'
 
 export const AppRouter = () => {
     return (
@@ -26,7 +27,8 @@ export const AppRouter = () => {
             <Route path="/addPicture" element={<AddPicture />}></Route>
             <Route path="/pictures" element={<Pictures />}></Route>
             <Route path="/soldierInfo/:id" element={<SoldierInfo />}> </Route>
+            <Route path="/contact" element={<Contact />}> </Route >
             <Route path="*" element={<h1>404</h1>}> </Route>
-        </Routes>
+        </Routes >
     )
 }
