@@ -67,7 +67,7 @@ const Soldiers = () => {
     }, [currentPage]);
 
     const handlePageChange = (newPage) => {
-        console.log(newPage);
+        console.log("ffffffff", newPage);
         setCurrentPage(newPage);
     };
 
@@ -152,15 +152,15 @@ const Soldiers = () => {
             </nav>
             <div className="">
                 <div className=''>
-                    <h2 className=" text-black text-4xl font-bold font-['Alef'] mb-4 text-center">לזכרם של נופלי חיל האוויר</h2>
+                    <h2 className=" text-black text-4xl font-bold font-['Alef'] mb-6 mt-6 text-center">לזכרם של הנופלים במלחמת חרבות ברזל</h2>
                 </div>
                 <div className="text-center mb-4">
                     <input
                         type=""
-                        placeholder="Search..."
+                        placeholder="חיפוש"
                         value={searchQuery}
                         onChange={handleSearchValue}
-                        className="border border-black px-4 py-2 rounded-md "
+                        className="border border-black px-4 py-2 rounded-md" style={{ direction: 'rtl' }}
                     />
                 </div>
                 <div className="grid lg:grid-cols-4 md:grid-cols-4 gap-4 ">
@@ -176,14 +176,19 @@ const Soldiers = () => {
                 </div>
             </div>
 
-            <div>
-                <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1 && !isPrev}>
+            <div className="flex justify-center items-center mt-8">
+                <button
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1 && !isPrev}
+                    className="px-4 py-1 bg-black text-white rounded-md mr-4"
+                >
                     Previous Page
                 </button>
-                <span>Page {currentPage}</span>
-                <button onClick={() => handlePageChange(currentPage + 1)}
+                <span className="text-lg font-bold">Page {currentPage}</span>
+                <button
+                    onClick={() => handlePageChange(currentPage + 1)}
                     disabled={currentPage == count && !isNext || !isNext}
-                // disabled={currentPage * pageSize >= totalCount}
+                    className="px-4 py-1 bg-black text-white rounded-md ml-4"
                 >
                     Next Page
                 </button>
