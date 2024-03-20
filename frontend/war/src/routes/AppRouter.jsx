@@ -29,11 +29,11 @@ export const AppRouter = () => {
             <Route path="/pictures" element={<Pictures />}></Route>
             <Route path="/theilim" element={<Theilim />}></Route>
             <Route path="/volunteering" element={<Voleenteerings />}></Route>
-            <Route path="/addRecepy" element={<AddRecipe />} ></Route >
-            <Route path="/addMemory" element={<AddRemember />} ></Route >
-            <Route path="/addPicture" element={<AddPicture />}></Route>
-            <Route path="/addTheilim" element={<AddTheilim />}></Route>
-            <Route path="/addVolunteer" element={<AddVolunteer />}></Route>
+            <Route path="soldierInfo/:id/addRecepy" element={<AddRecipe />} ></Route >
+            <Route path="soldierInfo/:id/addMemory" element={<AddRemember />} ></Route >
+            <Route path="soldierInfo/:id/addPicture" element={<AddPicture />}></Route>
+            <Route path="soldierInfo/:id/addTheilim" element={<AddTheilim />}></Route>
+            <Route path="soldierInfo/:id/addVolunteer" element={<AddVolunteer />}></Route>
             <Route path="/soldierInfo/:id" element={<SoldierInfo />}> </Route>
             <Route path="/contact" element={<Contact />}> </Route >
             <Route path="*" element={<h1>404</h1>}> </Route>

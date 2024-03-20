@@ -7,11 +7,34 @@ const Contact = () => {
     const nav = useNavigate();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
+    const [message, setMessage] = useState('');
     const [error, setError] = useState('');
     const [isOpen, setIsOpen] = useState(false);
 
+
+    const handleSendMessage = () => {
+        if (!name || !email || !message) {
+            setError('Please fill out all fields.');
+            return;
+        }
+
+        // Construct the email message
+        const emailContent = {
+            from: email,
+            to: 'shevibr0@gmail.com',
+            subject: `New message from ${name}`,
+            text: message
+        };
+
+        // Send the email using an API (not implemented here)
+        // You can use libraries like Nodemailer or services like AWS SES for sending emails
+
+        // Clear the form fields after sending the message
+        setName('');
+        setEmail('');
+        setMessage('');
+        setError('');
+    };
     return (
         <div className="bg-gray-200">
             <button className="lg:hidden md:hidden sm:hidden" onClick={() => { setIsOpen(!isOpen) }} >
@@ -57,19 +80,43 @@ const Contact = () => {
             </nav>
             <div className="flex flex-wrap justify-center items-center h-screen">
                 <div className="border border-black p-9 rounded-md">
-                    <h1 className="text-black text-4xl font-bold font-['Alef'] mb-4 text-center">הרשמה</h1>
+                    <h1 className="text-black text-4xl font-bold font-['Alef'] mb-4 text-center">צור קשר</h1>
                     <div className="flex flex-col items-center">
                         <label htmlFor="name">שם</label>
-                        {/* <input name="name" type="text" placeholder="הכנס שם" value={name} onChange={handleChangeName} style={{ direction: 'rtl' }} /><br />
+                        <input
+                            name="name"
+                            type="text"
+                            placeholder="הכנס שם"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            style={{ direction: 'rtl' }}
+                        />
+                        <br />
                         <label htmlFor="email">מייל</label>
-                        <input name="email" type="email" placeholder="הכנס מייל" value={email} onChange={handleChangeEmail} style={{ direction: 'rtl' }} /><br />
-                        <label htmlFor="password">סיסמא</label>
-                        <input name="password" type="password" placeholder="הכנס סיסמא" value={password} onChange={handleChangePassword} /><br />
-                        <label htmlFor="phoneNumber">טלפון</label>
-                        <input name="phoneNumber" type="tel" placeholder="הכנס טלפון" value={phoneNumber} onChange={handleChangePhoneNumber} /><br />
+                        <input
+                            name="email"
+                            type="email"
+                            placeholder="הכנס מייל"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            style={{ direction: 'rtl' }}
+                        />
+                        <br />
+                        <label htmlFor="message">הודעה</label>
+                        <textarea
+                            name="message"
+                            placeholder="כתוב את ההודעה שלך כאן"
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
+                            style={{ direction: 'rtl' }}
+                        />
+                        <br />
                         <span>{error}</span>
-                        <button onClick={handleRegistration} className="bg-black text-white px-4 py-2 rounded-md">הרשמה</button> */}
+                        <button onClick={handleSendMessage} className="bg-black text-white px-4 py-2 rounded-md">
+                            שלח הודעה
+                        </button>
                     </div>
+
                 </div>
             </div>
         </div>

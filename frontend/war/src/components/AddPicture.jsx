@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { addPicture } from '../utils/PictureUtil';
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 
 const AddPicture = () => {
     const nav = useNavigate()
+    const { id } = useParams();
     const [isOpen, setIsOpen] = useState(false);
     const [formData, setFormData] = useState({
-        idSoldier: '',
+        idSoldier: id,
         idUser: '',
         Url: '',
         Date: '',
@@ -101,13 +102,10 @@ const AddPicture = () => {
                     אודות
                 </div>
             </nav>
-            <h1 className="flex justify-center text-3xl font-bold ">Add Image</h1>
-            <div className="flex flex-wrap justify-center items-center bg-gray-400 text-white py-8 px-0 border border-black ">
-                <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
-                    <label className="flex flex-col">
-                        <span className="mb-1">Soldier ID:</span>
-                        <input type="number" name="idSoldier" value={formData.idSoldier} onChange={handleChange} required className="bg-white text-white border border-gray-600 px-4 py-2 rounded" />
-                    </label>
+            <h1 className="flex justify-center text-3xl font-bold ">הוספת תמונה</h1>
+            <div className="flex flex-wrap justify-center items-center bg-gray-400 text-white  h-screen">
+                <form onSubmit={handleSubmit} className="flex flex-col px-8 py-5 border-2 border-black">
+
                     <label className="flex flex-col">
                         <span className="mb-1">User ID:</span>
                         <input type="number" name="idUser" value={formData.idUser} onChange={handleChange} required className="bg-white text-white border border-gray-600 px-4 py-2 rounded" />

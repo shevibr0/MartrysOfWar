@@ -107,7 +107,7 @@ const Login = () => {
                         <label htmlFor="password" className="text-black mb-2">סיסמא</label>
                         <input name="email" type="text" placeholder="הכנס סיסמא" value={email} onChange={handleChangePassword} style={{ direction: 'rtl' }} className="mb-2" />
                         <span className="text-red-500 mb-2">{error}</span>
-                        <button onClick={handleClickLogin} className="bg-black text-white px-4 py-2 rounded-md">Login</button>
+                        <button onClick={handleClickLogin} className="bg-black text-white px-4 py-2 rounded-md">התחברות</button>
                     </div>
                 </div>
             </div>

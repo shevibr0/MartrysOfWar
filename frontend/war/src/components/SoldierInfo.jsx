@@ -73,19 +73,19 @@ const SoldierInfo = () => {
                 </div>
             </nav>
             <div className=" flex lg:flex md:flex sm:flex left-0 top-0 shadow bg-gray-300  justify-center  items-center  text-black lg:text-2xl  lg:h-[47px] md:text-xl md:h-[40px] sm:text-s  sm:h-[20px]  sm:mt-0 font-normal font-['Alef'] leading-[45px] cursor-pointer space-x-11">
-                <div onClick={() => nav('/addPicture')}>
+                <div onClick={() => nav(`/soldierInfo/${id}/addPicture`)}>
                     + הוסף תמונה
                 </div>
-                <div onClick={() => nav('/addRecepy')}>
+                <div onClick={() => nav(`/soldierInfo/${id}/addRecepy`)}>
                     + הוסף מתכון
                 </div>
-                <div onClick={() => nav('/addMemory')}>
+                <div onClick={() => nav(`/soldierInfo/${id}/addMemory`)}>
                     + הוסף זכרון
                 </div>
-                <div onClick={() => nav('/addTheilim')}>
+                <div onClick={() => nav(`/soldierInfo/${id}/addTheilim`)}>
                     + הוסף פרק תהילים
                 </div>
-                <div onClick={() => nav('/addVolunteer')} >
+                <div onClick={() => nav(`/soldierInfo/${id}/addVolunteer`)} >
                     + הוסף התנדבות
                 </div>
             </div>

@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { addMemory } from '../utils/MemoryUtil';
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 
 const AddRemember = () => {
     const nav = useNavigate()
     const [isOpen, setIsOpen] = useState(false);
+    const [error, setError] = useState('');
+    const { id } = useParams();
+    const [isLoading, setIsLoading] = useState(false);
     const [memory, setMemory] = useState({
-        IdSoldier: 0, // Replace with the actual soldier ID
+        IdSoldier: id, // Replace with the actual soldier ID
         IdUser: 0, // Replace with the actual user ID
         Remember: '', // Your default value or leave it as an empty string
         Date: new Date().toISOString().split('T')[0], // Use only the date part
@@ -78,35 +81,34 @@ const AddRemember = () => {
                     אודות
                 </div>
             </nav>
-            <h2>Add Memory</h2>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Soldier ID:
-                    <input
-                        type="number"
-                        name="IdSoldier"
-                        value={memory.IdSoldier}
-                        onChange={handleChange}
-                    />
-                </label>
-                <br />
-                <label>
-                    User ID:
-                    <input type="number" name="IdUser" value={memory.IdUser} onChange={handleChange} />
-                </label>
-                <br />
-                <label>
-                    Remember:
-                    <textarea name="Remember" value={memory.Remember} onChange={handleChange} />
-                </label>
-                <br />
-                <label>
-                    Date:
-                    <input type="date" name="Date" value={memory.Date} onChange={handleChange} />
-                </label>
-                <br />
-                <button type="submit">Add Memory</button>
-            </form>
+            <h2 className='flex justify-center text-3xl font-bold'>הוספת זכרון</h2>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+            <div className='flex flex-wrap justify-center items-center bg-gray-400 text-white h-screen'>
+                <form onSubmit={handleSubmit} className='flex flex-col py-6 px-4 border-2 border-black mt-0'>
+
+                    <label className='flex flex-col'>
+                        User ID:
+                        <input type="number" name="IdUser" value={memory.IdUser} onChange={handleChange} className='bg-white text-white border border-gray-600 px-4 py-2 rounded' />
+                    </label>
+                    <br />
+                    <label className='flex flex-col'>
+                        Remember:
+                        <textarea name="Remember" value={memory.Remember} onChange={handleChange} className='bg-white text-white border border-gray-600 px-4 py-2 rounded' />
+                    </label>
+                    <br />
+                    <label className='flex flex-col'>
+                        Date:
+                        <input type="date" name="Date" value={memory.Date} onChange={handleChange} className='bg-white text-white border border-gray-600 px-4 py-2 rounded' />
+                    </label>
+                    <br />
+                    <button type="submit"
+                        disabled={isLoading}
+                        className={`bg-gray-700 text-white py-2 px-4 rounded ${isLoading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-600 transition duration-300'
+                            }`}
+                    >
+                        {isLoading ? 'Adding...' : 'הוספת זכרון'}</button>
+                </form>
+            </div>
         </div>
     );
 };
